@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Auror\\source\\repos\\HNI-TPmoyennes\\HNI-TPmoyennes.csproj": {}
+    "C:\\Users\\Auror\\Source\\Repos\\ADE_TPMoyennes\\HNI-TPmoyennes.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Auror\\source\\repos\\HNI-TPmoyennes\\HNI-TPmoyennes.csproj": {
+    "C:\\Users\\Auror\\Source\\Repos\\ADE_TPMoyennes\\HNI-TPmoyennes.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Auror\\source\\repos\\HNI-TPmoyennes\\HNI-TPmoyennes.csproj",
+        "projectUniqueName": "C:\\Users\\Auror\\Source\\Repos\\ADE_TPMoyennes\\HNI-TPmoyennes.csproj",
         "projectName": "HNI-TPmoyennes",
-        "projectPath": "C:\\Users\\Auror\\source\\repos\\HNI-TPmoyennes\\HNI-TPmoyennes.csproj",
+        "projectPath": "C:\\Users\\Auror\\Source\\Repos\\ADE_TPMoyennes\\HNI-TPmoyennes.csproj",
         "packagesPath": "C:\\Users\\Auror\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Auror\\Source\\Repos\\HNI-TPmoyennes\\obj\\",
+        "outputPath": "C:\\Users\\Auror\\Source\\Repos\\ADE_TPMoyennes\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
