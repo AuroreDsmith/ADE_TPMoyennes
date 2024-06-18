@@ -8,15 +8,15 @@ namespace TPMoyennes
         public string prenom { get; private set; }
         public string nom { get; private set; }
         public List<Note> notes { get; private set; }
-        public List<float> moyenneMoyennesNotes { get; private set; }
-    
+        public HashSet<int> matiereList { get; private set; }
+
 
         public Eleve(string prenom, string nom)
         {
             this.prenom = prenom;
             this.nom = nom;
-            this.notes = new List<Note>();
-            this.moyenneMoyennesNotes = new List<float>();
+            notes = new List<Note>();
+            matiereList = new HashSet<int>();
         }
 
         public void ajouterNote(Note note)
@@ -49,51 +49,28 @@ namespace TPMoyennes
 
             if (compteurNotes == 0) return 0;
 
-            float moyenneMatiere = (float)Math.Truncate((cumulNote / compteurNotes) * 100) / 100;
-
-            /* Gestion des index et de MAJ de moyenneMoyennesNotes et éviter ArgumentOutOfRangeException
-            si taille tableau non suffisante */
-            if (moyenneMoyennesNotes.Count > matiere)
-            {
-                moyenneMoyennesNotes[matiere] = moyenneMatiere;
-            }
-            else
-            {
-                while (moyenneMoyennesNotes.Count <= matiere)
-                {
-                    moyenneMoyennesNotes.Add(0);
-                }
-                moyenneMoyennesNotes[matiere] = moyenneMatiere;
-            }
-
-            return moyenneMatiere;
+            float moyMatiere = (float)Math.Truncate((cumulNote / compteurNotes) * 100) / 100;
+            return moyMatiere;
         }
 
         //Moyenne générale de l'élève
         public float moyenneGeneral()
         {
-            if (moyenneMoyennesNotes.Count == 0) return 0;
-
-            for (int matiere = 0; matiere < moyenneMoyennesNotes.Count; matiere++)
+            foreach (Note note in notes)
             {
-                moyenneMatiere(matiere);
+                matiereList.Add(note.matiere);
             }
 
-            float moyenneGenerale = 0;
-            int compteurMatiere = 0;
-
-            foreach(float moyenne in moyenneMoyennesNotes)
+            float cumulMoyenne = 0;
+            foreach (int matiere in matiereList)
             {
-                if(moyenne > 0)
-                {
-                    moyenneGenerale += moyenne;
-                    compteurMatiere++;
-                }
+                cumulMoyenne += moyenneMatiere(matiere);
             }
 
-            if (compteurMatiere == 0) return 0;
+            if (matiereList.Count == 0) return 0;
 
-            return (float)Math.Truncate((moyenneGenerale/ compteurMatiere) * 100) / 100;
+            float moyenneGenerale = (float)Math.Truncate((cumulMoyenne / matiereList.Count) * 100) / 100;
+            return moyenneGenerale;
         }
     }
 }
