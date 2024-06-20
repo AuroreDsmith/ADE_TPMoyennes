@@ -8,7 +8,7 @@ namespace TPMoyennes
         public string prenom { get; private set; }
         public string nom { get; private set; }
         public List<Note> notes { get; private set; }
-        public HashSet<int> matiereList { get; private set; }
+        public List<int> matiereList { get; private set; }
 
 
         public Eleve(string prenom, string nom)
@@ -16,7 +16,7 @@ namespace TPMoyennes
             this.prenom = prenom;
             this.nom = nom;
             notes = new List<Note>();
-            matiereList = new HashSet<int>();
+            matiereList = new List<int>();
         }
 
         public void ajouterNote(Note note)
@@ -56,15 +56,14 @@ namespace TPMoyennes
         //Moyenne générale de l'élève
         public float moyenneGeneral()
         {
+            float cumulMoyenne = 0;
             foreach (Note note in notes)
             {
-                matiereList.Add(note.matiere);
-            }
-
-            float cumulMoyenne = 0;
-            foreach (int matiere in matiereList)
-            {
-                cumulMoyenne += moyenneMatiere(matiere);
+                if(!matiereList.Contains(note.matiere))
+                {
+                    matiereList.Add(note.matiere);
+                    cumulMoyenne += moyenneMatiere(note.matiere);
+                }   
             }
 
             if (matiereList.Count == 0) return 0;
